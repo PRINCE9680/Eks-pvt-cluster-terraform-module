@@ -17,3 +17,13 @@ output "nat_gateway_id" {
   description = "The ID of the NAT gateway"
   value       = aws_nat_gateway.nat.id
 }
+
+output "public_route_table_ids" {
+  description = "List of public route table IDs"
+  value       = aws_route_table.public[*].id
+}
+
+output "private_route_table_ids" {
+  description = "List of private route table IDs"
+  value       = aws_route_table.private[*].id
+}
