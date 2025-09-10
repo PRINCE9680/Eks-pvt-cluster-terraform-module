@@ -103,3 +103,15 @@ module "eks_private_cluster" {
   enabled_cluster_log_types = var.enabled_cluster_log_types
   tags                      = var.tags
 }
+
+
+module "ec2_instance" {
+  source            = "./modules/ec2"
+  ami_id            = var.ec2_ami_id
+  instance_type     = var.ec2_instance_type
+  subnet_id         = module.vpc.public_subnet_ids[0]
+  security_group_ids = [module.security_groups.worker_security_group_id]
+  key_name          = var.ec2_ssh_key
+  instance_name     = var.ec2_instance_name
+  tags              = var.tags
+}

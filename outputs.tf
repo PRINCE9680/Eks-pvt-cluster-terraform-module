@@ -52,3 +52,13 @@ output "endpoints_security_group_id" {
   description = "Security group ID for interface endpoints"
   value       = module.vpc_endpoints.endpoints_security_group_id
 }
+
+output "ec2_instance_id" {
+  description = "ID of the EC2 instance"
+  value       = module.ec2_instance.ec2_instance_id
+}
+
+output "ec2_instance_public_ip" {
+  description = "Public IP of the EC2 instance"
+  value       = module.ec2_instance.public_ip
+}

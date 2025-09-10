@@ -314,3 +314,18 @@ variable "sg_description" {
   type        = string
   default     = "Security group for worker nodes"
 }
+
+variable "ec2_ami_id" {
+  description = "AMI ID for EC2 instance"
+  type        = string
+}
+
+variable "ec2_instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
+
+variable "ec2_instance_name" {
+  description = "Name of the EC2 instance"
+  type        = string
+}

@@ -1,10 +1,10 @@
 # General Configuration
-aws_region            = "us-west-2"
+aws_region            = "us-east-2"
 cluster_name          = "prince-private-eks-cluster"
 vpc_cidr              = "10.10.0.0/16"
 public_subnets_cidrs  = ["10.10.1.0/24", "10.10.2.0/24"]
 private_subnets_cidrs = ["10.10.11.0/24", "10.10.12.0/24"]
-availability_zones    = ["us-west-2a", "us-west-2b"]
+availability_zones    = ["us-east-2a", "us-east-2b"]
 
 # DNS Configuration for VPC
 enable_dns_hostnames = true
@@ -50,7 +50,12 @@ tags = {
 }
 
 # EC2 SSH key for node group access
-ec2_ssh_key = "my-key-pair"  # Replace with your actual EC2 key pair name
+ec2_ssh_key = "prince-key-pair"  # Replace with your actual EC2 key pair name
+
+# EC2 instance 
+ec2_ami_id         = "ami-0cfde0ea8edd312d4" # Replace with your AMI ID
+ec2_instance_type  = "t2.small"
+ec2_instance_name  = "prince-bastion"
 
 # AMI type for nodes
 ami_type = "AL2_x86_64"
