@@ -1,10 +1,10 @@
 # General Configuration
-aws_region            = "us-east-2"
-cluster_name          = "prince-private-eks-cluster"
+aws_region            = "eu-north-1"
+cluster_name          = "private-eks-cluster"
 vpc_cidr              = "10.10.0.0/16"
 public_subnets_cidrs  = ["10.10.1.0/24", "10.10.2.0/24"]
 private_subnets_cidrs = ["10.10.11.0/24", "10.10.12.0/24"]
-availability_zones    = ["us-east-2a", "us-east-2b"]
+availability_zones    = ["eu-north-1a", "eu-north-1b"]
 
 # DNS Configuration for VPC
 enable_dns_hostnames = true
@@ -15,7 +15,7 @@ public_route_cidr  = "0.0.0.0/0"
 private_route_cidr = "0.0.0.0/0"
 
 # Node Group Configuration
-node_group_instance_types = ["t2.medium"]
+node_group_instance_types = ["c7i-flex.large"]
 node_group_desired        = 2
 node_group_min            = 1
 node_group_max            = 3
@@ -46,27 +46,27 @@ enabled_cluster_log_types = ["api", "audit", "authenticator"]
 
 # Tags
 tags = {
-  Name = "prince-private-eks-cluster"
+  Name = "private-eks-cluster"
 }
 
 # EC2 SSH key for node group access
-ec2_ssh_key = "prince-key-pair"  # Replace with your actual EC2 key pair name
+ec2_ssh_key = "prince"  # Replace with your actual EC2 key pair name
 
 # EC2 instance 
-ec2_ami_id         = "ami-0cfde0ea8edd312d4" # Replace with your AMI ID
-ec2_instance_type  = "t2.small"
-ec2_instance_name  = "prince-bastion"
+ec2_ami_id         = "ami-0a716d3f3b16d290c" # Replace with your AMI ID
+ec2_instance_type  = "t3.small"
+ec2_instance_name  = "bastion-host"
 
 # AMI type for nodes
 ami_type = "AL2_x86_64"
 
 # Node group tags
 node_group_tags = {
-  Name = "prince-private-eks-cluster-managed-node"
+  Name = "private-eks-cluster-managed-node"
 }
 
 # Security Group configuration (updated with _sg suffix)
-sg_name                  = "prince-private-eks-cluster-workers-sg"
+sg_name                  = "private-eks-cluster-workers-sg"
 sg_description           = "Security group for EKS worker nodes"
 
 egress_protocol_sg       = "-1"
@@ -95,10 +95,11 @@ interface_endpoints = [
   "ecr.dkr",
   "sts",
   "logs",
-  "ec2"
+  "ec2",
+  "eks"
 ]
 
-endpoints_sg_name        = "prince-private-eks-cluster-endpoints-sg"
+endpoints_sg_name        = "private-eks-cluster-endpoints-sg"
 endpoints_sg_description = "Security group for interface endpoints"
 
 ingress_from_port    = 443
